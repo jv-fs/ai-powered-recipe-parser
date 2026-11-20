@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import re
+from difflib import SequenceMatcher
 from typing import Any
 
 from openai import OpenAI
@@ -9,6 +10,7 @@ from .LLMMethods import extract_structure
 
 _WS = re.compile(r"\s+")
 _WORD_CHARS = re.compile(r"\w{2,}", flags=re.UNICODE)
+_FUZZY_MATCH_THRESHOLD = 0.90
 _FRAC_MAP = str.maketrans(
     {
         "½": "1/2",
@@ -31,6 +33,10 @@ def _norm(text: str | None) -> str:
 def _canonical(text: str | None) -> str:
     cleaned = _norm(text).casefold().translate(_FRAC_MAP).replace(",", ".")
     return _WS.sub(" ", cleaned).strip()
+
+
+def _similarity(a: str, b: str) -> float:
+    return SequenceMatcher(None, a, b, autojunk=False).ratio()
 
 
 def _as_str(value: Any) -> str | None:
@@ -88,9 +94,21 @@ def _find_span(haystack: str, needle: str | None) -> tuple[int, int] | None:
     h_tokens = [tok for _, _, tok in h_spans]
     size = len(n_tokens)
     if size and len(h_tokens) >= size:
+        best_score = 0.0
+        best_span: tuple[int, int] | None = None
+
         for i in range(len(h_tokens) - size + 1):
-            if h_tokens[i : i + size] == n_tokens:
+            window_tokens = h_tokens[i : i + size]
+            if window_tokens == n_tokens:
                 return (h_spans[i][0], h_spans[i + size - 1][1])
+
+            score = _similarity(c_needle, " ".join(window_tokens))
+            if score > best_score:
+                best_score = score
+                best_span = (h_spans[i][0], h_spans[i + size - 1][1])
+
+        if best_span is not None and best_score >= _FUZZY_MATCH_THRESHOLD:
+            return best_span
 
     return None
 
@@ -186,7 +204,7 @@ def build_structured_recipe(
         page_idx = _page_for_offset(pages, span[0] if span else None)
 
         if not inferred:
-            if not quote or span is None or _canonical(quote) not in _canonical(full_text):
+            if not quote or span is None:
                 warnings.append(
                     {
                         "code": "quote_not_found",
@@ -393,7 +411,7 @@ def build_structured_recipe(
                         }
                     )
 
-            if not quote or span is None or _canonical(quote) not in _canonical(full_text):
+            if not quote or span is None:
                 warnings.append(
                     {
                         "code": "quote_not_found",
@@ -470,7 +488,7 @@ def build_structured_recipe(
     s_reason = _as_str(rs_obj.get("inference_reason"))
     s_span = _find_span(full_text, s_quote) if s_quote else None
 
-    if s_quote and (s_span is None or _canonical(s_quote) not in _canonical(full_text)):
+    if s_quote and s_span is None:
         warnings.append(
             {
                 "code": "quote_not_found",
