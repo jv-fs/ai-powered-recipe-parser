@@ -764,6 +764,8 @@ def test_json_builder_helpers() -> None:
     assert JSONBuilder._find_span("Ich nehme ½ Liter.", "½ Liter") == (10, 17)
     assert JSONBuilder._find_span("a  b", "a b") == (0, 4)
     assert JSONBuilder._find_span("nothing here", "missing") is None
+    assert JSONBuilder._find_span("Ich nehme ½ Litter.", "½ Liter") == (10, 19)
+    assert JSONBuilder._find_span("Add salt.", "pepper") is None
 
     pages = [
         {"char_start": 0, "char_end": 3, "page": 10},
@@ -841,6 +843,16 @@ def test_explicit_step_quote_not_found_is_dropped(monkeypatch: pytest.MonkeyPatc
         warning["code"] == "quote_not_found" and warning["quote"] == "not in text"
         for warning in warnings
     )
+
+
+def test_fuzzy_step_quote_is_kept(monkeypatch: pytest.MonkeyPatch) -> None:
+    full_text = "Mix 2 cups flour."
+    raw = _structure(steps=[_raw_step(0, full_text, "Mix 2 cupps flour.")])
+
+    structured, warnings = _build(monkeypatch, full_text, raw)
+
+    assert structured["steps"][0]["span"] == {"start": 0, "end": 17}
+    assert not any(warning["code"] == "quote_not_found" for warning in warnings)
 
 
 def test_inferred_step_and_invalid_fields_are_sanitized(
@@ -952,6 +964,20 @@ def test_items_are_resolved_deduped_and_linked(monkeypatch: pytest.MonkeyPatch) 
     )
 
 
+def test_fuzzy_item_quote_is_kept(monkeypatch: pytest.MonkeyPatch) -> None:
+    full_text = "Chop 2 onions in a pan."
+    raw = _structure(
+        steps=[_raw_step(0, full_text, full_text)],
+        items=[_raw_item(0, "onion", "2 onionss", quantity="2")],
+    )
+
+    structured, warnings = _build(monkeypatch, full_text, raw)
+
+    assert structured["items"][0]["span"] == {"start": 5, "end": 13}
+    assert not any(warning["code"] == "quote_not_found" for warning in warnings)
+    assert not any(warning["code"] == "step_scope_mismatch" for warning in warnings)
+
+
 def test_item_quote_outside_step_scope_warns(monkeypatch: pytest.MonkeyPatch) -> None:
     full_text = "Use oil. Add oil."
     raw = _structure(
@@ -1016,6 +1042,26 @@ def test_servings_bad_quote_resets_to_inferred(monkeypatch: pytest.MonkeyPatch) 
     assert servings["span"] is None
     assert "quote_not_found" in codes
     assert "servings_inferred" in codes
+
+
+def test_fuzzy_servings_quote_is_kept(monkeypatch: pytest.MonkeyPatch) -> None:
+    full_text = "Serves 4 people."
+    raw = _structure(
+        servings=_raw_servings(
+            value=4,
+            quote="Serves 4 pepople.",
+            inferred=False,
+            reason=None,
+        )
+    )
+
+    structured, warnings = _build(monkeypatch, full_text, raw)
+
+    assert structured["servings"]["value"] == 4
+    assert structured["servings"]["quote"] == "Serves 4 pepople."
+    assert structured["servings"]["span"] == {"start": 0, "end": 16}
+    assert not any(warning["code"] == "quote_not_found" for warning in warnings)
+    assert not any(warning["code"] == "servings_inferred" for warning in warnings)
 
 
 def test_servings_inferred_value_clears_quote(monkeypatch: pytest.MonkeyPatch) -> None:
