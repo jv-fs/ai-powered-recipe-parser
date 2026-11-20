@@ -98,7 +98,7 @@ def test_pdf_emits_both_channels_on_every_page(tmp_path: Path) -> None:
     assert result.sources[0].kind == "pdf"
     assert [page.index for page in result.pages] == [0, 1]
     assert all(page.image and page.image.startswith(b"\x89PNG") for page in result.pages)
-    assert all(max(page.width, page.height) <= 2000 for page in result.pages)
+    assert all(max(page.width, page.height) <= 1280 for page in result.pages)
 
     text_page, image_page = result.pages
     assert text_page.text and text_page.text.startswith("Erste Zeile Zweite Zeile")

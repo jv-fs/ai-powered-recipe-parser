@@ -14,7 +14,7 @@ Kind = Literal["pdf", "image", "text"]
 
 MAX_INPUT_BYTES = 50 * 1024 * 1024
 MAX_PAGES = 100
-MAX_LONG_EDGE = 2000
+MAX_LONG_EDGE = 1280
 
 _WHITESPACE = re.compile(r"\s+")
 
