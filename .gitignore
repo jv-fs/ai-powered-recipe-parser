@@ -1,0 +1,13 @@
+Recipe.pdf
+*.pdf
+.env
+.env.*
+!.env.example
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+data/output/
+specification.md
