@@ -248,6 +248,18 @@ def test_is_default_client() -> None:
     assert LLMMethods.is_default_client(object(), "http://localhost:11434/v1") is False
 
 
+def test_is_default_client_requires_ollama_api_key(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    monkeypatch.setattr(LLMMethods, "LLM_API_KEY", "sk-test")
+    client = SimpleNamespace(
+        base_url="https://api.example.test/v1",
+        api_key="sk-test",
+    )
+
+    assert LLMMethods.is_default_client(client, "https://api.example.test/v1") is False
+
+
 def test_parse_json_obj() -> None:
     assert LLMMethods._parse_json_obj({"a": 1}) == {"a": 1}
     assert LLMMethods._parse_json_obj('{"a": 1}') == {"a": 1}
@@ -1231,6 +1243,7 @@ def test_extract_default_client_creation_and_flags(
         build_seen.update(kwargs)
         return {"steps": [], "items": [], "servings": {"value": None}}, []
 
+    monkeypatch.setattr(pipeline, "LLM_API_KEY", "sk-test")
     monkeypatch.setattr(pipeline, "OpenAI", fake_openai)
     monkeypatch.setattr(pipeline, "is_default_client", fake_is_default)
     monkeypatch.setattr(pipeline, "collect_document_readings", fake_collect)
@@ -1242,7 +1255,7 @@ def test_extract_default_client_creation_and_flags(
     )
 
     assert created == [
-        {"base_url": "http://ollama.test/v1", "api_key": "ollama"},
+        {"base_url": "http://ollama.test/v1", "api_key": "sk-test"},
     ]
     assert default_calls == []
     assert collect_seen["pages"] == []
@@ -1263,9 +1276,32 @@ def test_extract_default_client_creation_and_flags(
     )
 
     assert created == [
-        {"base_url": "http://ollama.test/v1", "api_key": "ollama"},
+        {"base_url": "http://ollama.test/v1", "api_key": "sk-test"},
     ]
     assert collect_seen["client"] is provided_client
     assert collect_seen["default_client"] is True
     assert build_seen["client"] is provided_client
     assert build_seen["default_client"] is True
+
+
+def test_extract_uses_vision_model_from_config(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    collect_seen: dict[str, Any] = {}
+
+    monkeypatch.setattr(pipeline, "VISION_MODEL", "vision-from-env")
+    monkeypatch.setattr(pipeline, "OpenAI", lambda **kwargs: object())
+    monkeypatch.setattr(
+        pipeline,
+        "collect_document_readings",
+        lambda **kwargs: collect_seen.update(kwargs) or [],
+    )
+    monkeypatch.setattr(
+        pipeline,
+        "build_structured_recipe",
+        lambda **kwargs: ({"steps": [], "items": [], "servings": {"value": None}}, []),
+    )
+
+    pipeline.extract(SimpleNamespace(pages=[]))
+
+    assert collect_seen["model"] == "vision-from-env"

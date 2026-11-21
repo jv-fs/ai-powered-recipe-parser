@@ -4,6 +4,7 @@ from typing import Any
 
 from openai import OpenAI
 
+from ..config import LLM_API_KEY, LLM_BASE_URL, VISION_MODEL
 from .Collector import collect_document_readings
 from .LLMMethods import is_default_client
 from .TextVerifier import verify_transcript
@@ -13,20 +14,22 @@ from .JSONBuilder import build_structured_recipe
 def extract(
     result: Any,
     *,
-    model: str = "qwen2.5vl:7b",
+    model: str | None = None,
     client: OpenAI | None = None,
-    ollama_base_url: str = "http://localhost:11434/v1",
+    ollama_base_url: str | None = None,
 ) -> dict[str, Any]:
-    default_client = client is None or is_default_client(client, ollama_base_url)
+    active_model = model or VISION_MODEL
+    active_base_url = ollama_base_url or LLM_BASE_URL
+    default_client = client is None or is_default_client(client, active_base_url)
     if client is None:
-        client = OpenAI(base_url=ollama_base_url, api_key="ollama")
+        client = OpenAI(base_url=active_base_url, api_key=LLM_API_KEY)
 
     pages = getattr(result, "pages", [])
     readings_list = collect_document_readings(
         pages=pages,
         client=client,
-        model=model,
-        ollama_base_url=ollama_base_url,
+        model=active_model,
+        ollama_base_url=active_base_url,
         default_client=default_client,
     )
 
@@ -93,8 +96,8 @@ def extract(
         full_text=full_text,
         pages=verified_pages,
         client=client,
-        model=model,
-        ollama_base_url=ollama_base_url,
+        model=active_model,
+        ollama_base_url=active_base_url,
         default_client=default_client,
     )
     all_warnings.extend(struct_warnings)
@@ -106,5 +109,5 @@ def extract(
         "items": structured["items"],
         "servings": structured["servings"],
         "warnings": all_warnings,
-        "model": model,
+        "model": active_model,
     }

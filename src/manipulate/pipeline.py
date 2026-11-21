@@ -4,6 +4,7 @@ from typing import Any
 
 from openai import OpenAI
 
+from ..config import LLM_API_KEY, LLM_BASE_URL
 from .Scaler import scale_recipe
 from .Veganizer import veganize_recipe
 from .VeganVerifier import verify_veganized_recipe
@@ -19,7 +20,8 @@ def manipulate(
     multipliers: dict[str, float] | None = None,
     client: OpenAI | None = None,
     model: str | None = None,
-    ollama_base_url: str = "http://localhost:11434/v1",
+    ollama_base_url: str = LLM_BASE_URL,
+    api_key: str = LLM_API_KEY,
 ) -> dict[str, Any]:
     scaled = scale_recipe(
         recipe,
@@ -36,6 +38,7 @@ def manipulate(
         client=client,
         model=model,
         ollama_base_url=ollama_base_url,
+        api_key=api_key,
         multipliers=multipliers,
     )
     return verify_veganized_recipe(scaled, veganized)

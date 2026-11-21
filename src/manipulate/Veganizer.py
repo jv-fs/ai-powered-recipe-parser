@@ -6,6 +6,8 @@ from typing import Any
 
 from openai import OpenAI
 
+from ..config import LLM_API_KEY, LLM_BASE_URL, TEXT_MODEL
+
 from .Scaler import format_quantity, parse_quantity
 
 VEGAN_MULTIPLIERS: dict[str, float] = {
@@ -102,13 +104,16 @@ def veganize_recipe(
     *,
     client: OpenAI | None = None,
     model: str | None = None,
-    ollama_base_url: str = "http://localhost:11434/v1",
+    ollama_base_url: str | None = None,
+    api_key: str | None = None,
     multipliers: dict[str, float] | None = None,
 ) -> dict[str, Any]:
     vegan = copy.deepcopy(recipe)
     warnings: list[dict[str, Any]] = list(vegan.get("warnings", []))
-    active_model = model or vegan.get("model") or "qwen2.5vl:7b"
-    active_client = client or OpenAI(base_url=ollama_base_url, api_key="ollama")
+    active_model = model or vegan.get("model") or TEXT_MODEL
+    active_base_url = ollama_base_url or LLM_BASE_URL
+    active_api_key = api_key or LLM_API_KEY
+    active_client = client or OpenAI(base_url=active_base_url, api_key=active_api_key)
     active_multipliers = {**VEGAN_MULTIPLIERS, **(multipliers or {})}
 
     steps_by_id = {s["id"]: s for s in vegan.get("steps", []) if "id" in s}

@@ -6,6 +6,7 @@ from typing import Any
 
 from openai import OpenAI
 
+from ..config import LLM_BASE_URL
 from .LLMMethods import extract_structure
 
 _WS = re.compile(r"\s+")
@@ -129,7 +130,7 @@ def build_structured_recipe(
     pages: list[dict[str, Any]],
     client: OpenAI,
     model: str,
-    ollama_base_url: str = "http://localhost:11434/v1",
+    ollama_base_url: str = LLM_BASE_URL,
     default_client: bool = True,
 ) -> tuple[dict[str, Any], list[dict[str, Any]]]:
     warnings: list[dict[str, Any]] = []

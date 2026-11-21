@@ -5,6 +5,7 @@ from typing import Any
 
 from openai import OpenAI
 
+from ..config import LLM_BASE_URL
 from .ImageManipulation import split_vertical_two_thirds
 from .LLMMethods import transcribe_image
 
@@ -24,7 +25,7 @@ def collect_page_readings(
     page: Any,
     client: OpenAI,
     model: str,
-    ollama_base_url: str = "http://localhost:11434/v1",
+    ollama_base_url: str = LLM_BASE_URL,
     default_client: bool = True,
 ) -> PageReadings:
     page_index = getattr(page, "index", 0)
@@ -116,7 +117,7 @@ def collect_document_readings(
     pages: list[Any],
     client: OpenAI,
     model: str,
-    ollama_base_url: str = "http://localhost:11434/v1",
+    ollama_base_url: str = LLM_BASE_URL,
     default_client: bool = True,
 ) -> list[PageReadings]:
     return [

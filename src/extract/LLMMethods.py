@@ -8,6 +8,8 @@ from typing import Any
 
 from openai import OpenAI
 
+from ..config import LLM_API_KEY, LLM_BASE_URL
+
 
 TRANSCRIBE_SCHEMA: dict[str, Any] = {
     "type": "object",
@@ -135,11 +137,15 @@ def _encode_image(image_bytes: bytes) -> dict[str, Any]:
     }
 
 
-def is_default_client(client: OpenAI, ollama_base_url: str) -> bool:
+def is_default_client(client: OpenAI, ollama_base_url: str = LLM_BASE_URL) -> bool:
     try:
         base = str(getattr(client, "base_url", ""))
         key = str(getattr(client, "api_key", ""))
-        return ollama_base_url.rstrip("/") in base and key == "ollama"
+        return (
+            ollama_base_url.rstrip("/") in base
+            and key == LLM_API_KEY
+            and LLM_API_KEY == "ollama"
+        )
     except Exception:
         return False
 
@@ -214,7 +220,7 @@ def call_llm(
     client: OpenAI,
     model: str,
     messages: list[dict[str, Any]],
-    ollama_base_url: str = "http://localhost:11434/v1",
+    ollama_base_url: str = LLM_BASE_URL,
     default_client: bool = True,
     schema: dict[str, Any] | None = None,
 ) -> tuple[dict[str, Any] | None, str | None]:
@@ -291,7 +297,7 @@ def transcribe_image(
     client: OpenAI,
     model: str,
     image_bytes: bytes,
-    ollama_base_url: str = "http://localhost:11434/v1",
+    ollama_base_url: str = LLM_BASE_URL,
     default_client: bool = True,
 ) -> tuple[str | None, str | None]:
     messages = [
@@ -322,7 +328,7 @@ def extract_structure(
     client: OpenAI,
     model: str,
     full_text: str,
-    ollama_base_url: str = "http://localhost:11434/v1",
+    ollama_base_url: str = LLM_BASE_URL,
     default_client: bool = True,
 ) -> tuple[dict[str, Any] | None, str | None]:
     messages = [
