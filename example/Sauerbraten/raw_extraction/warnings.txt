@@ -1,0 +1,88 @@
+source: Recipe.pdf
+pages: 2
+model: qwen2.5vl:7b
+
+[ingest] 2 warning(s)
+  code=resized page=0 message=Page downscaled to long edge 1280
+  code=resized page=1 message=Page downscaled to long edge 1280
+
+[extract + manipulate] 21 warning(s)
+[crop_refined] severity=info page=0
+  message: Minor character discrepancy resolved using zoomed crop.
+  full_reading: 'handgeschrie- benem'
+  crop_reading: 'handgeschriebenen'
+[recovered_by_crop] severity=warning page=0
+  message: Segment missed in full-page reading was recovered by crops.
+  full_reading: ''
+  crop_reading: 'Anno 1887'
+[crop_refined] severity=info page=0
+  message: Minor character discrepancy resolved using zoomed crop.
+  full_reading: 'Essig,'
+  crop_reading: 'Essig'
+[crop_refined] severity=info page=0
+  message: Minor character discrepancy resolved using zoomed crop.
+  full_reading: 'Wasser,'
+  crop_reading: 'Wasser ,'
+[crop_refined] severity=info page=0
+  message: Minor character discrepancy resolved using zoomed crop.
+  full_reading: 'geschrittene Zwiebeln,'
+  crop_reading: 'geschnittene Zwiebeln ,'
+[crop_refined] severity=info page=0
+  message: Minor character discrepancy resolved using zoomed crop.
+  full_reading: 'Lorbeerblätter.'
+  crop_reading: 'Korbeerblätter.'
+[verification_failed] severity=warning page=1
+  message: Significant discrepancy between full-page and crop readings.
+  full_reading: 'giept'
+  crop_reading: 'gießt'
+[crop_refined] severity=info page=1
+  message: Minor character discrepancy resolved using zoomed crop.
+  full_reading: 'heis'
+  crop_reading: 'heiß'
+[verification_failed] severity=warning page=1
+  message: Significant discrepancy between full-page and crop readings.
+  full_reading: 'giept'
+  crop_reading: 'gießt'
+[crop_refined] severity=info page=1
+  message: Minor character discrepancy resolved using zoomed crop.
+  full_reading: 'dazugeben,'
+  crop_reading: 'dazugeben'
+[crop_refined] severity=info page=1
+  message: Minor character discrepancy resolved using zoomed crop.
+  full_reading: 'giebt'
+  crop_reading: 'gibt'
+[crop_refined] severity=info page=1
+  message: Minor character discrepancy resolved using zoomed crop.
+  full_reading: 'knuisprig'
+  crop_reading: 'knusprig'
+[verification_failed] severity=warning page=1
+  message: Significant discrepancy between full-page and crop readings.
+  full_reading: 'giept'
+  crop_reading: 'gießt'
+[verification_failed] severity=warning page=1
+  message: Significant discrepancy between full-page and crop readings.
+  full_reading: 'läpt'
+  crop_reading: 'läßt'
+[verification_failed] severity=warning page=1
+  message: Significant discrepancy between full-page and crop readings.
+  full_reading: 'Bratenfond'
+  crop_reading: 'Bratentopf'
+[crop_refined] severity=info page=1
+  message: Minor character discrepancy resolved using zoomed crop.
+  full_reading: 'giebt'
+  crop_reading: 'gibt'
+[crop_refined] severity=info page=1
+  message: Minor character discrepancy resolved using zoomed crop.
+  full_reading: 'Soße,'
+  crop_reading: 'Soße ,'
+[recovered_by_crop] severity=warning page=1
+  message: Segment missed in full-page reading was recovered by crops.
+  full_reading: ''
+  crop_reading: 'Rotwein Kor- then'
+[unmapped_text] severity=warning page=0 quote='Zum Einlegen' span=(168, 180)
+  message: Text segment between steps was skipped during extraction.
+[unmapped_text] severity=warning page=1 quote='Man' span=(1030, 1033)
+  message: Text segment between steps was skipped during extraction.
+[servings_inferred] severity=info
+  message: Serving count not stated in recipe text.
+  reason: Servings are not explicitly stated in the text.

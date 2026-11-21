@@ -1,0 +1,58 @@
+source: cookies.jpg
+pages: 1
+model: qwen2.5vl:7b
+
+[ingest] 0 warning(s)
+  (none)
+
+[extract + manipulate] 19 warning(s)
+[recovered_by_crop] severity=warning page=0
+  message: Segment missed in full-page reading was recovered by crops.
+  full_reading: ''
+  crop_reading: '1'
+[verification_failed] severity=warning page=0
+  message: Significant discrepancy between full-page and crop readings.
+  full_reading: 'sour milk 1/2 c. Cake Flour (Corn meal) 1/4 t. Soda'
+  crop_reading: 'cake flour (ormore)'
+[missing_in_crop] severity=warning page=0
+  message: Segment present in full-page reading but absent in crops.
+  full_reading: '1/2 t. Salt'
+  crop_reading: ''
+[verification_failed] severity=warning page=0
+  message: Significant discrepancy between full-page and crop readings.
+  full_reading: 'sugar ,'
+  crop_reading: 'sugar, add egg and 1/2 c. sour milk 1/4 t. soda 1/2 t. salt Cream butter and sugar,'
+[crop_refined] severity=info page=0
+  message: Minor character discrepancy resolved using zoomed crop.
+  full_reading: 'dry ing.'
+  crop_reading: 'drying.'
+[missing_in_crop] severity=warning page=0
+  message: Segment present in full-page reading but absent in crops.
+  full_reading: 'egg , well beaten Granama Kohler'
+  crop_reading: ''
+[step_scope_mismatch] severity=warning page=0 step_id=step-001 quote='1/2 c. butter'
+  message: Item quote matched outside its assigned step boundaries.
+[step_scope_mismatch] severity=warning page=0 step_id=step-001 quote='1 c. br. sugar'
+  message: Item quote matched outside its assigned step boundaries.
+[step_scope_mismatch] severity=warning page=0 step_id=step-002 quote='2 dozen egg, well beaten'
+  message: Item quote matched outside its assigned step boundaries.
+[step_scope_mismatch] severity=warning page=0 step_id=step-002 quote='1/2 c. sour milk'
+  message: Item quote matched outside its assigned step boundaries.
+[step_scope_mismatch] severity=warning page=0 step_id=step-002 quote='2 sq. chocolate'
+  message: Item quote matched outside its assigned step boundaries.
+[step_scope_mismatch] severity=warning page=0 step_id=step-003 quote='1 1/2 c. Cake Flour (Corn meal)'
+  message: Item quote matched outside its assigned step boundaries.
+[step_scope_mismatch] severity=warning page=0 step_id=step-003 quote='1/4 t. Soda'
+  message: Item quote matched outside its assigned step boundaries.
+[step_scope_mismatch] severity=warning page=0 step_id=step-003 quote='1/4 t. B.P.'
+  message: Item quote matched outside its assigned step boundaries.
+[step_scope_mismatch] severity=warning page=0 step_id=step-003 quote='1/2 t. Salt'
+  message: Item quote matched outside its assigned step boundaries.
+[step_scope_mismatch] severity=warning page=0 step_id=step-004 quote='sifted drying.'
+  message: Item quote matched outside its assigned step boundaries.
+[step_scope_mismatch] severity=warning page=0 step_id=step-005 quote='Sheet - Bake 375 10 min.'
+  message: Item quote matched outside its assigned step boundaries.
+[vegan_animal_term_remaining] severity=warning step_id=step-001 item_id=item-001
+  message: Original animal ingredient 'butter' still appears in rewritten step.
+[vegan_animal_term_remaining] severity=warning step_id=step-002 item_id=item-003
+  message: Original animal ingredient 'egg' still appears in rewritten step.

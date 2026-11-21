@@ -1,0 +1,44 @@
+source: cookies.jpg
+pages: 1
+model: qwen2.5vl:7b
+
+[ingest] 0 warning(s)
+  (none)
+
+[extract + manipulate] 12 warning(s)
+[recovered_by_crop] severity=warning page=0
+  message: Segment missed in full-page reading was recovered by crops.
+  full_reading: ''
+  crop_reading: '1 1/2 c. cake flour (ormore) 1/4 t. B.P. 2 sq. chocolate Cream butter and sugar, add egg and'
+[missing_in_crop] severity=warning page=0
+  message: Segment present in full-page reading but absent in crops.
+  full_reading: '1/2 c. Cake Flour (Corn M e)'
+  crop_reading: ''
+[verification_failed] severity=warning page=0
+  message: Significant discrepancy between full-page and crop readings.
+  full_reading: 'Soda 1/4 t. B.P.'
+  crop_reading: 'soda'
+[verification_failed] severity=warning page=0
+  message: Significant discrepancy between full-page and crop readings.
+  full_reading: 'Salt 2 sq. chocolate'
+  crop_reading: 'salt'
+[crop_refined] severity=info page=0
+  message: Minor character discrepancy resolved using zoomed crop.
+  full_reading: 'dry ing.'
+  crop_reading: 'drying.'
+[missing_in_crop] severity=warning page=0
+  message: Segment present in full-page reading but absent in crops.
+  full_reading: 'egg , well beaten Granama Kohler'
+  crop_reading: ''
+[quote_not_found] severity=warning page=0 quote='egg, well beaten'
+  message: Step quote not found in verified transcript; step dropped.
+[unmapped_text] severity=warning page=0 quote='2 sq. chocolate' span=(222, 237)
+  message: Text segment between steps was skipped during extraction.
+[unmapped_text] severity=warning page=0 quote='egg , well beaten' span=(413, 430)
+  message: Text segment between steps was skipped during extraction.
+[step_scope_mismatch] severity=warning page=0 step_id=step-001 quote='1/2 c. butter'
+  message: Item quote matched outside its assigned step boundaries.
+[step_scope_mismatch] severity=warning page=0 step_id=step-001 quote='1 c. br. sugar'
+  message: Item quote matched outside its assigned step boundaries.
+[quote_not_found] severity=warning page=0 step_id=step-001 quote='egg, well beaten'
+  message: Explicit item quote not found in text; item dropped.

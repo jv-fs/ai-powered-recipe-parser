@@ -1,0 +1,524 @@
+{
+  "text": "Choc Drop Cookies 1/2 c. butter 1 c. br. sugar 1 1/2 c. cake flour (ormore) 1/4 t. B.P. 2 sq. chocolate Cream butter and sugar, add egg and 1/2 c. sour milk 1/2 c. Cake Flour (Corn M e) 1/4 t. Soda 1/4 t. B.P. 1/2 t. Salt 2 sq. chocolate Cream butter and sugar, add egg and sour milk then chocolate. Quickly fold in sifted drying. and stir only till well blended. Drop on greased Sheet - Bake 375 10 min. 2 dozen egg , well beaten Granama Kohler",
+  "pages": [
+    {
+      "page": 0,
+      "source_index": 0,
+      "text": "Choc Drop Cookies 1/2 c. butter 1 c. br. sugar 1 1/2 c. cake flour (ormore) 1/4 t. B.P. 2 sq. chocolate Cream butter and sugar, add egg and 1/2 c. sour milk 1/2 c. Cake Flour (Corn M e) 1/4 t. Soda 1/4 t. B.P. 1/2 t. Salt 2 sq. chocolate Cream butter and sugar, add egg and sour milk then chocolate. Quickly fold in sifted drying. and stir only till well blended. Drop on greased Sheet - Bake 375 10 min. 2 dozen egg , well beaten Granama Kohler",
+      "origin": "llm_verified",
+      "char_start": 0,
+      "char_end": 445,
+      "readings": {
+        "native_text": null,
+        "full_text": "Choc Drop Cookies 1/2 c. butter 1 c. br. sugar 1/2 c. sour milk 1/2 c. Cake Flour (Corn M e) 1/4 t. Soda 1/4 t. B.P. 1/2 t. Salt 2 sq. chocolate Cream butter and sugar, add egg and sour milk then chocolate. Quickly fold in sifted dry ing. and stir only till well blended. Drop on greased Sheet - Bake 375 10 min. 2 dozen egg , well beaten Granama Kohler",
+        "top_text": "Choc Drop Cookies 1/2 c. butter 1 c. br. sugar 1 1/2 c. cake flour (ormore) 1/4 t. B.P. 2 sq. chocolate Cream butter and sugar, add egg and 1/2 c. sour milk 1/4 t. soda 1/2 t. salt egg, well beaten",
+        "bottom_text": "1/2 c. sugar 1/2 c. Cake flour (Cormore) 1/4 t. B. P. 2 sq. chocolate 1/2 c. sour milk 1/4 t. soda 1/2 t. salt Cream butter and sugar, add egg and sour milk then chocolate. Quickly fold in sifted drying. and stir only till well blended. Drop on greased Sheet - Bake 375 10 min. 2 dozen"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "id": "step-001",
+      "index": 0,
+      "text": "Cream butter and sugar, add egg and 1/2 c. sour milk",
+      "quote": "Cream butter and sugar, add egg and 1/2 c. sour milk",
+      "inferred": false,
+      "inference_reason": null,
+      "page_index": 0,
+      "span": {
+        "start": 104,
+        "end": 156
+      },
+      "item_ids": [
+        "item-001",
+        "item-002"
+      ],
+      "duration": null,
+      "conditions": [],
+      "continues_previous": false
+    },
+    {
+      "id": "step-002",
+      "index": 1,
+      "text": "1/2 c. Cake Flour (Corn M e)",
+      "quote": "1/2 c. Cake Flour (Corn M e)",
+      "inferred": false,
+      "inference_reason": null,
+      "page_index": 0,
+      "span": {
+        "start": 157,
+        "end": 185
+      },
+      "item_ids": [
+        "item-003"
+      ],
+      "duration": null,
+      "conditions": [],
+      "continues_previous": false
+    },
+    {
+      "id": "step-003",
+      "index": 2,
+      "text": "1/4 t. Soda",
+      "quote": "1/4 t. Soda",
+      "inferred": false,
+      "inference_reason": null,
+      "page_index": 0,
+      "span": {
+        "start": 186,
+        "end": 197
+      },
+      "item_ids": [
+        "item-004"
+      ],
+      "duration": null,
+      "conditions": [],
+      "continues_previous": false
+    },
+    {
+      "id": "step-004",
+      "index": 3,
+      "text": "1/4 t. B.P.",
+      "quote": "1/4 t. B.P.",
+      "inferred": false,
+      "inference_reason": null,
+      "page_index": 0,
+      "span": {
+        "start": 76,
+        "end": 87
+      },
+      "item_ids": [
+        "item-005"
+      ],
+      "duration": null,
+      "conditions": [],
+      "continues_previous": false
+    },
+    {
+      "id": "step-005",
+      "index": 4,
+      "text": "1/2 t. Salt",
+      "quote": "1/2 t. Salt",
+      "inferred": false,
+      "inference_reason": null,
+      "page_index": 0,
+      "span": {
+        "start": 210,
+        "end": 221
+      },
+      "item_ids": [
+        "item-006"
+      ],
+      "duration": null,
+      "conditions": [],
+      "continues_previous": false
+    },
+    {
+      "id": "step-006",
+      "index": 5,
+      "text": "2 sq. chocolate",
+      "quote": "2 sq. chocolate",
+      "inferred": false,
+      "inference_reason": null,
+      "page_index": 0,
+      "span": {
+        "start": 88,
+        "end": 103
+      },
+      "item_ids": [
+        "item-007"
+      ],
+      "duration": null,
+      "conditions": [],
+      "continues_previous": false
+    },
+    {
+      "id": "step-007",
+      "index": 6,
+      "text": "Cream butter and sugar, add egg and sour milk then chocolate.",
+      "quote": "Cream butter and sugar, add egg and sour milk then chocolate.",
+      "inferred": false,
+      "inference_reason": null,
+      "page_index": 0,
+      "span": {
+        "start": 238,
+        "end": 299
+      },
+      "item_ids": [],
+      "duration": null,
+      "conditions": [],
+      "continues_previous": false
+    },
+    {
+      "id": "step-008",
+      "index": 7,
+      "text": "Quickly fold in sifted drying.",
+      "quote": "Quickly fold in sifted drying.",
+      "inferred": false,
+      "inference_reason": null,
+      "page_index": 0,
+      "span": {
+        "start": 300,
+        "end": 330
+      },
+      "item_ids": [],
+      "duration": null,
+      "conditions": [],
+      "continues_previous": false
+    },
+    {
+      "id": "step-009",
+      "index": 8,
+      "text": "and stir only till well blended.",
+      "quote": "and stir only till well blended.",
+      "inferred": false,
+      "inference_reason": null,
+      "page_index": 0,
+      "span": {
+        "start": 331,
+        "end": 363
+      },
+      "item_ids": [],
+      "duration": null,
+      "conditions": [],
+      "continues_previous": false
+    },
+    {
+      "id": "step-010",
+      "index": 9,
+      "text": "Drop on greased Sheet - Bake 375 10 min.",
+      "quote": "Drop on greased Sheet - Bake 375 10 min.",
+      "inferred": false,
+      "inference_reason": null,
+      "page_index": 0,
+      "span": {
+        "start": 364,
+        "end": 404
+      },
+      "item_ids": [
+        "item-008",
+        "item-009"
+      ],
+      "duration": "10 min.",
+      "conditions": [
+        "375"
+      ],
+      "continues_previous": false
+    },
+    {
+      "id": "step-011",
+      "index": 10,
+      "text": "2 dozen",
+      "quote": "2 dozen",
+      "inferred": false,
+      "inference_reason": null,
+      "page_index": 0,
+      "span": {
+        "start": 405,
+        "end": 412
+      },
+      "item_ids": [],
+      "duration": null,
+      "conditions": [],
+      "continues_previous": false
+    },
+    {
+      "id": "step-012",
+      "index": 11,
+      "text": "Granama Kohler",
+      "quote": "Granama Kohler",
+      "inferred": false,
+      "inference_reason": null,
+      "page_index": 0,
+      "span": {
+        "start": 431,
+        "end": 445
+      },
+      "item_ids": [],
+      "duration": null,
+      "conditions": [],
+      "continues_previous": false
+    }
+  ],
+  "items": [
+    {
+      "id": "item-001",
+      "step_id": "step-001",
+      "name": "butter",
+      "type": "ingredient",
+      "quantity": "1/2 c.",
+      "unit": null,
+      "preparation": null,
+      "optional": false,
+      "inferred": false,
+      "inference_reason": null,
+      "quote": "1/2 c. butter",
+      "page_index": 0,
+      "span": {
+        "start": 18,
+        "end": 31
+      }
+    },
+    {
+      "id": "item-002",
+      "step_id": "step-001",
+      "name": "brown sugar",
+      "type": "ingredient",
+      "quantity": "1 c.",
+      "unit": null,
+      "preparation": null,
+      "optional": false,
+      "inferred": false,
+      "inference_reason": null,
+      "quote": "1 c. br. sugar",
+      "page_index": 0,
+      "span": {
+        "start": 32,
+        "end": 46
+      }
+    },
+    {
+      "id": "item-003",
+      "step_id": "step-002",
+      "name": "cake flour",
+      "type": "ingredient",
+      "quantity": "1/2 c.",
+      "unit": null,
+      "preparation": null,
+      "optional": false,
+      "inferred": false,
+      "inference_reason": null,
+      "quote": "1/2 c. Cake Flour (Corn M e)",
+      "page_index": 0,
+      "span": {
+        "start": 157,
+        "end": 185
+      }
+    },
+    {
+      "id": "item-004",
+      "step_id": "step-003",
+      "name": "soda",
+      "type": "ingredient",
+      "quantity": "1/4 t.",
+      "unit": null,
+      "preparation": null,
+      "optional": false,
+      "inferred": false,
+      "inference_reason": null,
+      "quote": "1/4 t. Soda",
+      "page_index": 0,
+      "span": {
+        "start": 186,
+        "end": 197
+      }
+    },
+    {
+      "id": "item-005",
+      "step_id": "step-004",
+      "name": "baking powder",
+      "type": "ingredient",
+      "quantity": "1/4 t.",
+      "unit": null,
+      "preparation": null,
+      "optional": false,
+      "inferred": false,
+      "inference_reason": null,
+      "quote": "1/4 t. B.P.",
+      "page_index": 0,
+      "span": {
+        "start": 76,
+        "end": 87
+      }
+    },
+    {
+      "id": "item-006",
+      "step_id": "step-005",
+      "name": "salt",
+      "type": "ingredient",
+      "quantity": "1/2 t.",
+      "unit": null,
+      "preparation": null,
+      "optional": false,
+      "inferred": false,
+      "inference_reason": null,
+      "quote": "1/2 t. Salt",
+      "page_index": 0,
+      "span": {
+        "start": 210,
+        "end": 221
+      }
+    },
+    {
+      "id": "item-007",
+      "step_id": "step-006",
+      "name": "chocolate",
+      "type": "ingredient",
+      "quantity": "2 sq.",
+      "unit": null,
+      "preparation": null,
+      "optional": false,
+      "inferred": false,
+      "inference_reason": null,
+      "quote": "2 sq. chocolate",
+      "page_index": 0,
+      "span": {
+        "start": 88,
+        "end": 103
+      }
+    },
+    {
+      "id": "item-008",
+      "step_id": "step-010",
+      "name": "sheet",
+      "type": "tool",
+      "quantity": null,
+      "unit": null,
+      "preparation": null,
+      "optional": false,
+      "inferred": false,
+      "inference_reason": null,
+      "quote": "Drop on greased Sheet",
+      "page_index": 0,
+      "span": {
+        "start": 364,
+        "end": 385
+      }
+    },
+    {
+      "id": "item-009",
+      "step_id": "step-010",
+      "name": "pan",
+      "type": "tool",
+      "quantity": null,
+      "unit": null,
+      "preparation": null,
+      "optional": false,
+      "inferred": false,
+      "inference_reason": null,
+      "quote": "Bake 375 10 min.",
+      "page_index": 0,
+      "span": {
+        "start": 388,
+        "end": 404
+      }
+    }
+  ],
+  "servings": {
+    "id": "serving-001",
+    "value": 2,
+    "inferred": false,
+    "inference_reason": null,
+    "quote": "2 dozen",
+    "span": {
+      "start": 405,
+      "end": 412
+    },
+    "original_value": 2,
+    "scale_factor": 1.0
+  },
+  "warnings": [
+    {
+      "code": "recovered_by_crop",
+      "severity": "warning",
+      "message": "Segment missed in full-page reading was recovered by crops.",
+      "page": 0,
+      "full_reading": "",
+      "crop_reading": "1 1/2 c. cake flour (ormore) 1/4 t. B.P. 2 sq. chocolate Cream butter and sugar, add egg and"
+    },
+    {
+      "code": "missing_in_crop",
+      "severity": "warning",
+      "message": "Segment present in full-page reading but absent in crops.",
+      "page": 0,
+      "full_reading": "1/2 c. Cake Flour (Corn M e)",
+      "crop_reading": ""
+    },
+    {
+      "code": "verification_failed",
+      "severity": "warning",
+      "message": "Significant discrepancy between full-page and crop readings.",
+      "page": 0,
+      "full_reading": "Soda 1/4 t. B.P.",
+      "crop_reading": "soda"
+    },
+    {
+      "code": "verification_failed",
+      "severity": "warning",
+      "message": "Significant discrepancy between full-page and crop readings.",
+      "page": 0,
+      "full_reading": "Salt 2 sq. chocolate",
+      "crop_reading": "salt"
+    },
+    {
+      "code": "crop_refined",
+      "severity": "info",
+      "message": "Minor character discrepancy resolved using zoomed crop.",
+      "page": 0,
+      "full_reading": "dry ing.",
+      "crop_reading": "drying."
+    },
+    {
+      "code": "missing_in_crop",
+      "severity": "warning",
+      "message": "Segment present in full-page reading but absent in crops.",
+      "page": 0,
+      "full_reading": "egg , well beaten Granama Kohler",
+      "crop_reading": ""
+    },
+    {
+      "code": "quote_not_found",
+      "severity": "warning",
+      "message": "Step quote not found in verified transcript; step dropped.",
+      "page": 0,
+      "quote": "egg, well beaten"
+    },
+    {
+      "code": "unmapped_text",
+      "severity": "warning",
+      "message": "Text segment between steps was skipped during extraction.",
+      "page": 0,
+      "quote": "2 sq. chocolate",
+      "span": {
+        "start": 222,
+        "end": 237
+      }
+    },
+    {
+      "code": "unmapped_text",
+      "severity": "warning",
+      "message": "Text segment between steps was skipped during extraction.",
+      "page": 0,
+      "quote": "egg , well beaten",
+      "span": {
+        "start": 413,
+        "end": 430
+      }
+    },
+    {
+      "code": "step_scope_mismatch",
+      "severity": "warning",
+      "message": "Item quote matched outside its assigned step boundaries.",
+      "page": 0,
+      "step_id": "step-001",
+      "quote": "1/2 c. butter"
+    },
+    {
+      "code": "step_scope_mismatch",
+      "severity": "warning",
+      "message": "Item quote matched outside its assigned step boundaries.",
+      "page": 0,
+      "step_id": "step-001",
+      "quote": "1 c. br. sugar"
+    },
+    {
+      "code": "quote_not_found",
+      "severity": "warning",
+      "message": "Explicit item quote not found in text; item dropped.",
+      "page": 0,
+      "step_id": "step-001",
+      "quote": "egg, well beaten"
+    }
+  ],
+  "model": "qwen2.5vl:7b"
+}
