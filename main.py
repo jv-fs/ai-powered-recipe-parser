@@ -61,16 +61,6 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
         action="store_true",
         help="Convert animal-derived ingredients and affected steps to vegan alternatives.",
     )
-    parser.add_argument(
-        "--model",
-        default="qwen2.5vl:7b",
-        help="Ollama model to use for extraction and manipulation.",
-    )
-    parser.add_argument(
-        "--ollama-base-url",
-        default="http://localhost:11434/v1",
-        help="Base URL for the Ollama OpenAI-compatible API.",
-    )
     return parser.parse_args(argv)
 
 
@@ -82,11 +72,7 @@ def main(argv: list[str] | None = None) -> None:
     source_label = ", ".join(p.name for p in input_paths)
 
     ingested = ingest(source)
-    extracted = extract(
-        ingested,
-        model=args.model,
-        ollama_base_url=args.ollama_base_url,
-    )
+    extracted = extract(ingested)
 
     processed = manipulate(
         extracted,
@@ -94,8 +80,6 @@ def main(argv: list[str] | None = None) -> None:
         scale_factor=args.scale,
         assumed_base_servings=args.base_servings,
         make_vegan=args.vegan,
-        model=args.model,
-        ollama_base_url=args.ollama_base_url,
     )
 
     ingest_warnings = [
